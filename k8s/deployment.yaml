@@ -16,20 +16,20 @@ spec:
       spec:
         containers:
             - name: "goserver"
-              image: thiagoximenes/helloworld:v4
+              image: thiagoximenes/helloworld:v5.2
               imagePullPolicy: IfNotPresent
               envFrom:
                 - configMapRef:
                     name: goserver-env
-#              env:
-#                - name: "NAME"
-#                  valueFrom:
-#                    configMapKeyRef:
-#                      name: goserver-env
-#                      key: NAME
-#                - name: "AGE"
-#                  valueFrom:
-#                    configMapKeyRef:
-#                      name: goserver-env
-#                      key: AGE
+              volumeMounts:
+                - mountPath: /go/my-family
+                  name: config
+                  readOnly: true
         restartPolicy: Always
+        volumes:
+          - name: config
+            configMap:
+              name: configmap-family
+              items:
+                - key: members
+                  path: family.txt
