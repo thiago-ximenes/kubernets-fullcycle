@@ -16,6 +16,20 @@ spec:
       spec:
         containers:
             - name: "goserver"
-              image: thiagoximenes/helloworld:v3
+              image: thiagoximenes/helloworld:v4
               imagePullPolicy: IfNotPresent
+              envFrom:
+                - configMapRef:
+                    name: goserver-env
+#              env:
+#                - name: "NAME"
+#                  valueFrom:
+#                    configMapKeyRef:
+#                      name: goserver-env
+#                      key: NAME
+#                - name: "AGE"
+#                  valueFrom:
+#                    configMapKeyRef:
+#                      name: goserver-env
+#                      key: AGE
         restartPolicy: Always
