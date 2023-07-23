@@ -16,7 +16,7 @@ spec:
       spec:
         containers:
             - name: "goserver"
-              image: thiagoximenes/helloworld:v8
+              image: thiagoximenes/helloworld:v9
               readinessProbe:
                 httpGet:
                   path: /healthz
@@ -24,6 +24,17 @@ spec:
                 periodSeconds: 3
                 failureThreshold: 1
                 initialDelaySeconds: 10
+
+              livenessProbe:
+                httpGet:
+                  path: /healthz
+                  port: 80
+                periodSeconds: 5
+                failureThreshold: 1
+                timeoutSeconds: 1
+                successThreshold: 1
+                initialDelaySeconds: 15
+
               imagePullPolicy: IfNotPresent
               envFrom:
                 - configMapRef:
