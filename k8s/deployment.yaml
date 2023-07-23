@@ -16,11 +16,13 @@ spec:
       spec:
         containers:
             - name: "goserver"
-              image: thiagoximenes/helloworld:v5.2
+              image: thiagoximenes/helloworld:v7
               imagePullPolicy: IfNotPresent
               envFrom:
                 - configMapRef:
                     name: goserver-env
+                - secretRef:
+                    name: goserver-secret
               volumeMounts:
                 - mountPath: /go/my-family
                   name: config
