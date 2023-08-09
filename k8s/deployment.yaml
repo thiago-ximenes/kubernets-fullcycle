@@ -18,6 +18,14 @@ spec:
             - name: "goserver"
               image: thiagoximenes/helloworld:v9
 
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 20Mi
+                limits:
+                    cpu: 500m
+                    memory: 25Mi
+
               startupProbe:
                 httpGet:
                   path: /healthz

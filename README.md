@@ -26,3 +26,37 @@ wget  https://github.com/kubernetes-sigs/metrics-server/releases/latest/download
 ```bash
 kubectl apply -f metrics-server.yaml
 ```
+
+### 2.1. Resources
+#### 2.1.1. Requests
+
+1. CPU:
+    - vCPU &rarrtl; 1000m (milicores) (shared cpu)
+    
+2. Memory:
+   - 1Gi (Gibibyte) = 1024Mi (Mebibyte)
+
+##### Example
+
+```yaml
+resources:
+  requests:
+    memory: "64Mi"
+    cpu: "250m"
+```
+
+- We are setting the minimum amount of resources that the container needs to run. If the container needs more resources, it will be allocated more resources.
+
+#### 2.1.2. Limits
+
+##### Example
+
+```yaml
+resources:
+  limits:
+    memory: "128Mi"
+    cpu: "500m"
+```
+
+- We are setting the maximum amount of resources that the container can use. If the container needs more resources, it will be allocated more resources.
+- If the container exceeds the limit, it will be terminated.
