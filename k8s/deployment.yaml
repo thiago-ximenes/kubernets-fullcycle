@@ -16,7 +16,7 @@ spec:
       spec:
         containers:
             - name: "goserver"
-              image: thiagoximenes/helloworld:v9
+              image: thiagoximenes/helloworld:v10
 
               resources:
                 requests:

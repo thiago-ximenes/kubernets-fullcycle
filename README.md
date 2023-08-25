@@ -60,3 +60,7 @@ resources:
 
 - We are setting the maximum amount of resources that the container can use. If the container needs more resources, it will be allocated more resources.
 - If the container exceeds the limit, it will be terminated.
+
+## 3. [HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
+
+HPA file says, about your resources usage, how munch and when you need to scale up or down your pods.
