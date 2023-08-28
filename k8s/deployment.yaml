@@ -59,8 +59,13 @@ spec:
                 - mountPath: /go/my-family
                   name: config
                   readOnly: true
+                - mountPath: /go/pvc
+                  name: goserver-pvc
         restartPolicy: Always
         volumes:
+          - name: goserver-pvc
+            persistentVolumeClaim:
+              claimName: goserver-pvc
           - name: config
             configMap:
               name: configmap-family
